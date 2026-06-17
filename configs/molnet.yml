@@ -1,0 +1,53 @@
+train:
+  seed: 1
+  result_dir: results/
+  epochs: 100   # pretraining epochs
+  batch: 16
+#  instruct_learning:
+#    max_iters: 24000
+#    val_freq: 200
+#    update_freq: 1000
+#    critic_iters: 600  # pretrain the critic
+#    instruct_lr: 1.e-3    # not too large, otherwise loss explosion
+#    critic_loss_weight: 10.0
+#    labeled_weight: 0.0
+#    unlabeled_weight: 0.001   # very important, not too large, otherwise loss explosion
+#    only_positive: False   # True or False
+#    max_grad_norm: 100.0
+#    soft_label: True
+#    min_lr: 1.e-5
+    # patience: 10
+
+
+#data:
+#  normalize: True   # scale the label between 0 and 1
+#  unlabeled_path: ./dataset/ZINC250/
+#  unlabeled_size: -1   # -1 means no limitation
+
+#model:
+#  aggr: pool  # ['pool', 'transformer']
+#  transformer_heads: 8
+#  transformer_hidden: 128
+#  node_in_feats: 37
+#  dropout: 0.3
+#  num_layers: 3
+#  n_fc_layers: 1
+#  edge_hidden: 256
+#  edge_in_feats: 6
+#  fc_hidden: 512
+#  node_hidden: 128
+#  lr: 1.e-5
+parameters:
+  seed: 42
+  encoder: ./configs/config/encoder_bbbp.json
+  subencoder: ./configs/config/subencoder_bbbp.json
+  drop_ratio: 0.3
+  batch_size: 64
+  lr:   1.e-5
+  exp_name: toxic
+  epoch_backbone: 1500
+  dataset: toxic_all
+  data: ogbg-molbbbp
+  PElabeldataset: toxic_all
+  device: 0
+  decomp: brics  # choices: ['brics', 'recap']
